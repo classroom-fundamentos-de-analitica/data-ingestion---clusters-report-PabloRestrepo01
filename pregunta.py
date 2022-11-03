@@ -31,9 +31,7 @@ def ingest_data():
             cluster[0] = int(lista[0])
             cluster[1] = int(lista[1])
             cluster[2] = float(lista[2].replace(',','.'))
-            palabras.pop(0)
-            palabras = ' '.join(lista[3:])
-            cluster[3] += palabras
+            cluster[3] = ' '.join(lista[4:])
 
         elif re.match('^ +[a-z]', fila):
             palabras = fila.split()
@@ -47,3 +45,5 @@ def ingest_data():
 
     df = pd.DataFrame (clusters, columns = ['cluster', 'cantidad_de_palabras_clave', 'porcentaje_de_palabras_clave', 'principales_palabras_clave'])
     return df
+
+print(ingest_data())
